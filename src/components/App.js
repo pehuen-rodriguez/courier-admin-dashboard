@@ -4,6 +4,7 @@ import { Switch, Route } from 'react-router-dom'
 import Header from './Header'
 import ClientList from './ClientList'
 import CreateClient from './CreateClient'
+import Login from './Login'
 
 class App extends Component {
   render() {
@@ -14,6 +15,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={ClientList} />
             <Route exact path="/create" component={CreateClient} />
+            <Route exact path="/login" component={Login} />
           </Switch>
         </div>
       </div>
