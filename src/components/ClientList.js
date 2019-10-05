@@ -1,21 +1,38 @@
+/* eslint-disable no-undef */
 import React, { Component } from 'react'
 import Client from './Client'
+import { Query } from 'react-apollo'
+import gql from 'graphql-tag'
+
+const CLIENTS_LIST_QUERY = gql`
+  {
+    clientList {
+      clients {
+        id
+        createdAt
+        name
+      }
+    }
+  }
+`
 
 class ClientList extends Component {
   render() {
-    const clientsToRender = [
-      {
-        id: '1',
-        name: 'Primer nombre hardcode'
-      },
-      {
-        id: '2',
-        name: 'Segundo nombre hardcode'
-      },
-    ]
-
     return (
-      <div>{clientsToRender.map(client => <Client id={client.id} client={client} />)}</div>
+      <Query query={CLIENTS_LIST_QUERY}>
+        {({ loading, error, data }) => {
+          if (loading) return <div>Fetching</div>
+          if (error) return <div>Error</div>
+    
+          const clientsToRender = data.clientList.clients
+    
+          return (
+            <div>
+              {clientsToRender.map(client => <Client key={client.id} client={client} />)}
+            </div>
+          )
+        }}
+      </Query>
     )
   }
 }
