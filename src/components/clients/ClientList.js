@@ -1,6 +1,6 @@
 /* eslint-disable no-undef */
 import React, { Component } from 'react'
-import Client from './Client'
+import Client from './ClientShow'
 import { Query } from 'react-apollo'
 import gql from 'graphql-tag'
 

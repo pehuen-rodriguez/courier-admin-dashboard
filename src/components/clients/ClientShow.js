@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-class Client extends Component {
+class ClientShow extends Component {
   render() {
     return (
       <div>
@@ -12,4 +12,4 @@ class Client extends Component {
   }
 }
 
-export default Client
+export default ClientShow
